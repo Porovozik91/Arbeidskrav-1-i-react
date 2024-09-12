@@ -8,7 +8,7 @@
     overflow: hidden;
 }
 
-.menu_container {
+.menuContainer {
     display: flex;
     justify-content: space-evenly;
     align-items: center;

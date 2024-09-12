@@ -1,43 +1,34 @@
-import Howto from "../common/Howto"
-import LeaderBoard from "../common/LeaderBoard"
-import { useState } from "react"
-import "../../styles/startMenu.css"
+import Howto from "../common/Howto";
+import LeaderBoard from "../common/LeaderBoard";
+import "../../styles/startMenu.css";
 
-const StartMenu = () => {
-    const [name, setName] = useState("");
-
-    const userName = (e) => {
-        setName(e.target.value);
-    }
-
-    const navToGame = () => {
-        
-    }
-    
+const StartMenu = ({ playGame, userName, setUserName }) => {
+    const submitForm = (e) => {
+        e.preventDefault(); 
+        playGame(); 
+    };
 
     return (
         <section className="gameMenu">
-            <div className="menu_container">
+            <div className="menuContainer">
                 <Howto />
-
-                <form>
-                    <label>Potato Pulp <br /> 60-Second Showdown</label>
+                <form onSubmit={submitForm}>
+                    <label>
+                        Potato Pulp <br /> 60-Second Showdown
+                    </label>
                     <input
                         type="text"
                         placeholder="Enter Your Name"
-                        value={name}
-                        onChange={userName} />
-
-                    <button onClick={navToGame}>
-                        Start Game
-                    </button>
+                        value={userName}
+                        onChange={(e) => setUserName(e.target.value)}
+                        required
+                    />
+                    <button type="submit">Start Game</button>
                 </form>
-
                 <LeaderBoard />
             </div>
         </section>
+    );
+};
 
-    )
-}
-
-export default StartMenu
+export default StartMenu;
