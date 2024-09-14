@@ -1,0 +1,21 @@
+.gameScreen header {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  
+  .userGameData {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .gameScreen main {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .gameWindow {
+    background-color: green;
+    width: 1100px;
+    height: 700px;
+  }
