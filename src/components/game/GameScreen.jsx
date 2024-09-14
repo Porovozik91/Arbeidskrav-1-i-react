@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "../../styles/gameScreen.css"
 import Gamelogic from "./Gamelogic";
 
+
 const GameScreen = ({ userName, endGame }) => {
   const [timer, setTimer] = useState(60);
 
@@ -13,7 +14,7 @@ const GameScreen = ({ userName, endGame }) => {
       }, 1000);
       return () => clearInterval(counter);
     } else {
-      endGame(); 
+    /*   endGame();  */
     }
   }, [timer, endGame]);
 
@@ -22,7 +23,7 @@ const GameScreen = ({ userName, endGame }) => {
     <header>
       <div className="userGameData">
         <p className="userName">{userName}</p>
-        <div>
+        <div className="score">
           <ul>
             <li>score</li>
             <li>bestScore</li>

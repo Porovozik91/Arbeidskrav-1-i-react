@@ -33,8 +33,26 @@ export const minusScoreFigures = [
   Image3
 ];
 
-// genere et random figur fra alle importerte figurer
+// For å holde styr på den siste minusfiguren som ble vist
+let lastFigureWasMinus = false;
+
+// Generer et tilfeldig figur fra alle importerte figurer
 export const getRandomFigure = () => {
-  const allFigures = [...plusScoreFigures, ...minusScoreFigures]; 
-  return allFigures[Math.floor(Math.random() * allFigures.length)]; // 
+  let newFigure;
+  const isMinus = Math.random() < 0.25;
+
+  if (lastFigureWasMinus && isMinus) {
+    // Hvis siste figuren var minusScore, den nye også er minusScore
+    newFigure = minusScoreFigures[Math.floor(Math.random() * minusScoreFigures.length)];
+  } else {
+    // Ellers, velg en tilfeldig figur fra plusScore eller minusScore
+    newFigure = isMinus 
+      ? minusScoreFigures[Math.floor(Math.random() * minusScoreFigures.length)]
+      : plusScoreFigures[Math.floor(Math.random() * plusScoreFigures.length)];
+  }
+
+  // Oppdater den siste figuren
+  lastFigureWasMinus = isMinus;
+
+  return newFigure;
 };

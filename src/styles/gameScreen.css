@@ -1,6 +1,15 @@
-.gameScreen header {
+.gameScreen {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; 
+  }
+  
+  .gameScreen header {
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
+    flex: 0.4;
+    text-decoration: none;
   }
   
   .userGameData {
@@ -12,10 +21,35 @@
   .gameScreen main {
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex: 0.5; 
   }
   
+  .score ul{
+    list-style: none;
+  }
+
   .gameWindow {
-    background-color: green;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr); 
+    grid-template-rows: repeat(10, 1fr);   
     width: 1100px;
     height: 700px;
+    background-color: green;
+    overflow: hidden;
+  }
+  
+  .figureContainer {
+    cursor: pointer;
+    display: grid;
+    grid-column: var(--col);
+    grid-row: var(--row);
+  }
+  
+  .figureContainer img {
+    width: 100%;
+    height: auto;
+    min-width: 125px;
+    min-height: 87px;
+    object-fit: cover;
   }
