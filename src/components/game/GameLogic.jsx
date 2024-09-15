@@ -25,12 +25,13 @@ const Gamelogic = ({ setCorrectFigures, setWrongFigures }) => {
         // ny figur hver 2 sec
         const stopInterval = setInterval(() => {
             generateFigure();
-        }, 1000);
+        }, 2000);
 
         return () => clearInterval(stopInterval);
     }, []);
 
     const figureClicked = (id, figure) => {
+        if (clicked === id) return;
         setClicked(id);
 
         //Teller hvor mange riktige og feil figurer er trukket på

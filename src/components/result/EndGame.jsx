@@ -1,4 +1,3 @@
-
 const EndGame = ({ userName, startNewGame, wrongFigures, correctFigures }) => {
   return (
     <div>
@@ -12,4 +11,3 @@ const EndGame = ({ userName, startNewGame, wrongFigures, correctFigures }) => {
 };
 
 export default EndGame;
-

@@ -1,22 +1,9 @@
-import { useEffect, useState } from "react";
 import "../../styles/gameScreen.css"
 import Gamelogic from "./Gamelogic";
 
 
-const GameScreen = ({ userName, endGame, setWrongFigures, setCorrectFigures }) => {
-  const [timer, setTimer] = useState(60);
-
-  // Timer. Kaller på endGame() når tiden er på 0
-  useEffect(() => {
-    if (timer > 0) {
-      const counter = setInterval(() => {
-        setTimer(prevTimer => prevTimer - 1);
-      }, 1000);
-      return () => clearInterval(counter);
-    } else {
-      endGame(); 
-    }
-  }, [timer, endGame]);
+const GameScreen = ({ userName, timeLeft, setWrongFigures, setCorrectFigures }) => {
+  
 
   return (
     <section className="gameScreen">
@@ -30,7 +17,7 @@ const GameScreen = ({ userName, endGame, setWrongFigures, setCorrectFigures }) =
           </ul>
         </div>
       </div>
-      <div className="gamerTimer">{timer}</div>
+      <div className="gamerTimer">{timeLeft}</div>
       <div className="ingameMenu">
         <button>Reset</button>
         <button>Quit</button>
@@ -46,4 +33,3 @@ const GameScreen = ({ userName, endGame, setWrongFigures, setCorrectFigures }) =
 };
 
 export default GameScreen;
-
