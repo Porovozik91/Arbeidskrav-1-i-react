@@ -3,7 +3,7 @@ import "../../styles/gameScreen.css"
 import Gamelogic from "./Gamelogic";
 
 
-const GameScreen = ({ userName, endGame }) => {
+const GameScreen = ({ userName, endGame, setWrongFigures, setCorrectFigures }) => {
   const [timer, setTimer] = useState(60);
 
   // Timer. Kaller på endGame() når tiden er på 0
@@ -14,7 +14,7 @@ const GameScreen = ({ userName, endGame }) => {
       }, 1000);
       return () => clearInterval(counter);
     } else {
-    /*   endGame();  */
+      endGame(); 
     }
   }, [timer, endGame]);
 
@@ -37,7 +37,9 @@ const GameScreen = ({ userName, endGame }) => {
       </div>
     </header>
     <main>
-      <Gamelogic/>
+      <Gamelogic  
+        setWrongFigures={setWrongFigures}
+        setCorrectFigures={setCorrectFigures} />
     </main>
   </section>
   );

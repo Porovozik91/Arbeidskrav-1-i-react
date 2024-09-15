@@ -39,7 +39,7 @@ let lastFigureWasMinus = false;
 // Generer et tilfeldig figur fra alle importerte figurer
 export const getRandomFigure = () => {
   let newFigure;
-  const isMinus = Math.random() < 0.25;
+  const isMinus = Math.random() < 0.15;
 
   if (lastFigureWasMinus && isMinus) {
     // Hvis siste figuren var minusScore, den nye også er minusScore

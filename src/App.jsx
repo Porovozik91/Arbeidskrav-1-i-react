@@ -6,10 +6,14 @@ import EndGame from "./components/result/EndGame";
 
 const App = () => {
   const [userName, setUserName] = useState("");
-  const [navTo, setNavTo] = useState("start"); 
+  const [navTo, setNavTo] = useState("start");
+  const [wrongFigures, setWrongFigures] = useState(0);
+  const [correctFigures, setCorrectFigures] = useState(0);
 
   const startMenu = () => {
     setNavTo("start");
+    setWrongFigures(0); 
+    setCorrectFigures(0); 
   };
 
   const startGame = () => {
@@ -32,11 +36,15 @@ const App = () => {
         <GameScreen
           userName={userName}
           endGame={endGame}
+          setWrongFigures={setWrongFigures}
+          setCorrectFigures={setCorrectFigures}
         />
       ) : (
         <EndGame
           userName={userName}
           startNewGame={startMenu}
+          wrongFigures={wrongFigures}
+          correctFigures={correctFigures}
         />
       )}
     </>
@@ -44,4 +52,5 @@ const App = () => {
 };
 
 export default App;
+
 
