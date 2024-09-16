@@ -1,52 +1,71 @@
 import { useEffect, useState } from "react";
 import { getRandomFigure, minusScoreFigures, plusScoreFigures } from "./Figures";
 
-const Gamelogic = ({ setCorrectFigures, setWrongFigures }) => {
+const Gamelogic = ({ 
+    setScore, setCorrectFigures, 
+    setWrongFigures, figureTimeReducer,
+    setFigureTimeReducer, 
+}) => {
     // informasjon om den nåværende figuren som vises
     const [gameFigure, setGameFigure] = useState(null);
     const [clicked, setClicked] = useState(null);
-
+    
     // håndterer generering og oppdatering av figurer samt intervaller
     useEffect(() => {
         const generateFigure = () => {
-
-            //oppdaterer tilstanden med en ny figur og dens posisjon  
+            // oppdaterer tilstanden med en ny figur, dens posisjon og tidspunkt når figuren vises
             setGameFigure({
                 id: Date.now(),
                 figure: getRandomFigure(),
-                row: Math.floor(Math.random() * 10),
-                col: Math.floor(Math.random() * 10),
+                row: Math.floor(Math.random() * 5),
+                col: Math.floor(Math.random() * 5),
+                startTime: Date.now(),
             });
             setClicked(null);
         };
 
         generateFigure();
 
-        // ny figur hver 2 sec
+        // ny figur hvert figureTimeReducer sekund
         const stopInterval = setInterval(() => {
             generateFigure();
-        }, 2000);
+        }, figureTimeReducer * 1000);
 
         return () => clearInterval(stopInterval);
-    }, []);
+    }, [figureTimeReducer]);
 
+    // logikken for beregning av poeng når en figur blir klikket
     const figureClicked = (id, figure) => {
         if (clicked === id) return;
         setClicked(id);
 
-        //Teller hvor mange riktige og feil figurer er trukket på
+        if (!gameFigure || gameFigure.id !== id) return; 
+
+        const elapsedTime = (Date.now() - gameFigure.startTime) / 1000;
+        
+        const maxPoints = 100;
+        const minPoints = 50;
+
+        const earnedPoints = elapsedTime <= figureTimeReducer
+            ? Math.max(minPoints, Math.round((1 - (elapsedTime / figureTimeReducer)) * (maxPoints - minPoints) + minPoints))
+            : minPoints; 
+
+        
         if (plusScoreFigures.includes(figure)) {
+            setScore(prevScore => prevScore + earnedPoints); 
             setCorrectFigures(prevCount => {
                 const countCorrect = prevCount + 1;
-                console.log(`Correct Figures: ${countCorrect}`);
-                console.log((id))
+
+                // visnings tiden reduseres med 5% for hver riktig figur
+                setFigureTimeReducer(prevTime => Math.max(0.5, prevTime * 0.95)); 
+                console.log(`Riktige figurer: ${countCorrect}, Poeng: ${earnedPoints}`);
                 return countCorrect;
             });
         } else if (minusScoreFigures.includes(figure)) {
+            setScore(prevScore => prevScore - minPoints);
             setWrongFigures(prevCount => {
                 const countWrong = prevCount + 1;
-                console.log(`Wrong Figures: ${countWrong}`);
-                console.log((id))
+                console.log(`Feil figurer: ${countWrong}, Poeng: -${minPoints}`);
                 return countWrong;
             });
         }
@@ -58,7 +77,7 @@ const Gamelogic = ({ setCorrectFigures, setWrongFigures }) => {
                 <div
                     className="figureContainer"
                     key={gameFigure.id}
-                    onClick={() => figureClicked(gameFigure.id, gameFigure.figure)}
+                    onMouseDown={() => figureClicked(gameFigure.id, gameFigure.figure)}
                     style={{
                         "--col": gameFigure.col + 1,
                         "--row": gameFigure.row + 1,
@@ -68,6 +87,7 @@ const Gamelogic = ({ setCorrectFigures, setWrongFigures }) => {
                     <img
                         src={gameFigure.figure}
                         alt="game figure"
+                        style={{ pointerEvents: 'none' }} 
                     />
                 </div>
             )}
@@ -76,5 +96,7 @@ const Gamelogic = ({ setCorrectFigures, setWrongFigures }) => {
 };
 
 export default Gamelogic;
+
+
 
 

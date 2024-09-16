@@ -7,9 +7,14 @@ import EndGame from "./components/result/EndGame";
 const App = () => {
   const [userName, setUserName] = useState("");
   const [navTo, setNavTo] = useState("start");
+  const [timer, setTimer] = useState(0);
+  const [score, setScore] = useState(0);
+
   const [wrongFigures, setWrongFigures] = useState(0);
   const [correctFigures, setCorrectFigures] = useState(0);
-  const [timer, setTimer] = useState(0);
+
+  const [figureTimeReducer, setFigureTimeReducer] = useState(2);
+  
   
 
   // Timer. Kaller på endGame() når tiden er på 0
@@ -27,6 +32,7 @@ const App = () => {
 
   const startMenu = () => {
     setNavTo("start");
+    setScore(0);
     setWrongFigures(0); 
     setCorrectFigures(0); 
   };
@@ -34,6 +40,7 @@ const App = () => {
   const startGame = () => {
     setNavTo("game");
     setTimer(60);
+    setFigureTimeReducer(2);
   };
 
   const endGame = () => {
@@ -51,15 +58,22 @@ const App = () => {
       ) : navTo === "game" ? (
         <GameScreen
           userName={userName}
+          scored={score}
+          setScore={setScore}
           endGame={endGame}
           setWrongFigures={setWrongFigures}
           setCorrectFigures={setCorrectFigures}
           timeLeft={timer}
+          figureTimeReducer={figureTimeReducer}
+          setFigureTimeReducer={setFigureTimeReducer}
         />
       ) : (
         <EndGame
           userName={userName}
+          scored={score}
+
           startNewGame={startMenu}
+
           wrongFigures={wrongFigures}
           correctFigures={correctFigures}
         />

@@ -2,7 +2,12 @@ import "../../styles/gameScreen.css"
 import Gamelogic from "./Gamelogic";
 
 
-const GameScreen = ({ userName, timeLeft, setWrongFigures, setCorrectFigures }) => {
+const GameScreen = ({ 
+  userName, scored, setScore, timeLeft, 
+  setWrongFigures, setCorrectFigures, 
+  figureTimeReducer,
+  setFigureTimeReducer, 
+}) => {
   
 
   return (
@@ -12,7 +17,7 @@ const GameScreen = ({ userName, timeLeft, setWrongFigures, setCorrectFigures }) 
         <p className="userName">{userName}</p>
         <div className="score">
           <ul>
-            <li>score</li>
+            <li>{scored}</li>
             <li>bestScore</li>
           </ul>
         </div>
@@ -25,8 +30,12 @@ const GameScreen = ({ userName, timeLeft, setWrongFigures, setCorrectFigures }) 
     </header>
     <main>
       <Gamelogic  
+        setScore={setScore}
         setWrongFigures={setWrongFigures}
-        setCorrectFigures={setCorrectFigures} />
+        setCorrectFigures={setCorrectFigures} 
+        figureTimeReducer={figureTimeReducer}
+        setFigureTimeReducer={setFigureTimeReducer}
+        />
     </main>
   </section>
   );
