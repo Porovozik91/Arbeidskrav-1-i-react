@@ -1,11 +1,21 @@
-const EndGame = ({ userName, scored, startNewGame, wrongFigures, correctFigures }) => {
+import LeaderBoard from "../common/LeaderBoard";
+
+const EndGame = ({ userName, scored, startNewGame, wrongFigures, correctFigures, playerScores }) => {
   return (
     <div>
-      <h2>{userName}`s result</h2>
+     
+     <div>
+     <h2>Your score for this round</h2>
+     <p>Player Name: {userName}`</p>
       <p>Score: {scored}</p>
       <p>Correct Figures: {correctFigures}</p>
       <p>Wrong Figures: {wrongFigures}</p>
       <button onClick={startNewGame}>Start New Game</button>
+     </div>
+
+      <div>
+         <LeaderBoard  playerScores={playerScores} />
+      </div>
     </div>
   );
 };

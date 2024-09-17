@@ -4,9 +4,8 @@ import Gamelogic from "./Gamelogic";
 
 const GameScreen = ({ 
   userName, scored, setScore, timeLeft, 
-  setWrongFigures, setCorrectFigures, 
-  figureTimeReducer,
-  setFigureTimeReducer, 
+  setWrongFigures, setCorrectFigures,  
+  figureTimeReducer, setFigureTimeReducer
 }) => {
   
 
@@ -14,18 +13,18 @@ const GameScreen = ({
     <section className="gameScreen">
     <header>
       <div className="userGameData">
+        <div>
+        <p>Player</p>
         <p className="userName">{userName}</p>
+        </div>
         <div className="score">
-          <ul>
-            <li>{scored}</li>
-            <li>bestScore</li>
-          </ul>
+          <p>Your Score</p>
+          <p>{scored}</p>
         </div>
       </div>
       <div className="gamerTimer">{timeLeft}</div>
       <div className="ingameMenu">
-        <button>Reset</button>
-        <button>Quit</button>
+      <button onClick={() => location.reload()}>Quit</button>
       </div>
     </header>
     <main>

@@ -42,6 +42,8 @@
   .figureContainer {
     cursor: pointer;
     display: grid;
+    justify-content: center;
+    align-items: center;
     grid-column: var(--col);
     grid-row: var(--row);
   }
@@ -49,8 +51,8 @@
   .figureContainer img {
     width: 100%;
     height: auto;
-    min-width: 125px;
-    min-height: 87px;
+    max-width: 140px;
+    max-height: 140px;
     object-fit: cover;
   }
 

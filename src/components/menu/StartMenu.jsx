@@ -2,7 +2,7 @@ import Howto from "../common/Howto";
 import LeaderBoard from "../common/LeaderBoard";
 import "../../styles/startMenu.css";
 
-const StartMenu = ({ playGame, userName, setUserName }) => {
+const StartMenu = ({ playGame, userName, setUserName, playerScores }) => {
     const submitForm = (e) => {
         e.preventDefault(); 
         playGame(); 
@@ -25,7 +25,7 @@ const StartMenu = ({ playGame, userName, setUserName }) => {
                     />
                     <button type="submit">Start Game</button>
                 </form>
-                <LeaderBoard />
+                <LeaderBoard  playerScores={playerScores} />
             </div>
         </section>
     );

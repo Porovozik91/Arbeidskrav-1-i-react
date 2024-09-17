@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { getRandomFigure, minusScoreFigures, plusScoreFigures } from "./Figures";
+import { getRandomFigure, minusScoreFigures, plusScoreFigures } from "../../utils/Figures";
 
 const Gamelogic = ({ 
     setScore, setCorrectFigures, 
     setWrongFigures, figureTimeReducer,
-    setFigureTimeReducer, 
+    setFigureTimeReducer
 }) => {
     // informasjon om den nåværende figuren som vises
     const [gameFigure, setGameFigure] = useState(null);
@@ -33,6 +33,7 @@ const Gamelogic = ({
 
         return () => clearInterval(stopInterval);
     }, [figureTimeReducer]);
+    
 
     // logikken for beregning av poeng når en figur blir klikket
     const figureClicked = (id, figure) => {
