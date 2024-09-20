@@ -33,7 +33,7 @@ const App = () => {
 
   const startGame = () => {
     setNavTo("game");
-    setTimer(10);                        
+    setTimer(10);     // timer tiden                   
     setFigureTimeReducer(2);
     setFeedback("");
   };
