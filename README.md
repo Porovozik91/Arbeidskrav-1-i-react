@@ -67,4 +67,3 @@ gameTimer.js
 ScoreStorage.js 
 
 *Lagring og henting av poengsummer fra lokal lagring. 
-
