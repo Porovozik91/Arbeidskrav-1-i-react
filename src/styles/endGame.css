@@ -1,0 +1,55 @@
+.endBody {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding-bottom: 20px;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../assets/Menu.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+
+.playerScored {
+    background: rgba(255, 255, 255, 0.397);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+ .text {
+    padding-top: 50px;
+    padding-bottom: 30px;
+    font-size: 2rem;
+    color: white;
+}
+
+ .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+.newGamebtn {
+    margin-top: 20px;
+}
+
+.newGamebtn button {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #000000;
+    color: white;
+    cursor: pointer;
+}
+
+.newGamebtn button:hover {
+    background-color: #09b15a;
+}

@@ -4,11 +4,12 @@ import { getRandomFigure, minusScoreFigures, plusScoreFigures } from "../../util
 const Gamelogic = ({ 
     setScore, setCorrectFigures, 
     setWrongFigures, figureTimeReducer,
-    setFigureTimeReducer
+    setFigureTimeReducer, setFeedback
 }) => {
     // informasjon om den nåværende figuren som vises
     const [gameFigure, setGameFigure] = useState(null);
     const [clicked, setClicked] = useState(null);
+  
     
     // håndterer generering og oppdatering av figurer samt intervaller
     useEffect(() => {
@@ -33,7 +34,6 @@ const Gamelogic = ({
 
         return () => clearInterval(stopInterval);
     }, [figureTimeReducer]);
-    
 
     // logikken for beregning av poeng når en figur blir klikket
     const figureClicked = (id, figure) => {
@@ -43,7 +43,6 @@ const Gamelogic = ({
         if (!gameFigure || gameFigure.id !== id) return; 
 
         const elapsedTime = (Date.now() - gameFigure.startTime) / 1000;
-        
         const maxPoints = 100;
         const minPoints = 50;
 
@@ -51,7 +50,6 @@ const Gamelogic = ({
             ? Math.max(minPoints, Math.round((1 - (elapsedTime / figureTimeReducer)) * (maxPoints - minPoints) + minPoints))
             : minPoints; 
 
-        
         if (plusScoreFigures.includes(figure)) {
             setScore(prevScore => prevScore + earnedPoints); 
             setCorrectFigures(prevCount => {
@@ -59,6 +57,10 @@ const Gamelogic = ({
 
                 // visnings tiden reduseres med 5% for hver riktig figur
                 setFigureTimeReducer(prevTime => Math.max(0.5, prevTime * 0.95)); 
+
+                setFeedback(`Great job! You scored ${earnedPoints} points!`);
+                setTimeout(() => setFeedback(""), 2000); 
+
                 console.log(`Riktige figurer: ${countCorrect}, Poeng: ${earnedPoints}`);
                 return countCorrect;
             });
@@ -66,6 +68,9 @@ const Gamelogic = ({
             setScore(prevScore => prevScore - minPoints);
             setWrongFigures(prevCount => {
                 const countWrong = prevCount + 1;
+                setFeedback(`Oops! You lost ${minPoints} points.`);
+                setTimeout(() => setFeedback(""), 2000); 
+
                 console.log(`Feil figurer: ${countWrong}, Poeng: -${minPoints}`);
                 return countWrong;
             });
@@ -78,17 +83,21 @@ const Gamelogic = ({
                 <div
                     className="figureContainer"
                     key={gameFigure.id}
+                    data-id={gameFigure.id}
                     onMouseDown={() => figureClicked(gameFigure.id, gameFigure.figure)}
                     style={{
                         "--col": gameFigure.col + 1,
                         "--row": gameFigure.row + 1,
                         opacity: clicked === gameFigure.id ? 0.2 : 1,
+                        transform: clicked === gameFigure.id ? "scale(0.8)" : "scale(1)",
+                        transition: "opacity 0.3s, transform 0.3s",
                     }}
                 >
+                    <div className="progress-bar" style={{ width: `${Math.max(0, figureTimeReducer - (Date.now() - gameFigure.startTime) / 1000) / figureTimeReducer * 100}%` }}></div>
                     <img
                         src={gameFigure.figure}
                         alt="game figure"
-                        style={{ pointerEvents: 'none' }} 
+                        style={{ pointerEvents: "none" }} 
                     />
                 </div>
             )}
@@ -97,6 +106,7 @@ const Gamelogic = ({
 };
 
 export default Gamelogic;
+
 
 
 

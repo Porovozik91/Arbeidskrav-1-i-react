@@ -1,0 +1,100 @@
+.menuButton button {
+    padding: 12px 24px; 
+    font-size: 1.2rem; 
+    font-weight: bold;
+    font-family: "Press Start 2P", system-ui;
+    border-radius: 1rem; 
+    cursor: pointer;
+    border: 2px solid #000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: 20px; 
+}
+
+.menuButton button:hover {
+    transform: scale(1.5);
+    color: green;
+}
+
+.navigationButtons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 600px; /* 370px;  */
+    position: absolute;
+    transform: translateY(50%);
+    box-sizing: border-box;
+  }
+  
+  .nav-button {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background: none; 
+    border: none; 
+    position: relative;
+  }
+  
+  .navLeft::before, .navLeft::after, .navWright::before, .navWright::after {
+    content: "";
+    position: absolute;
+    border-style: solid;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .navLeft::before {
+    border-width: 30px;
+    border-color: transparent rgb(255, 255, 255) transparent transparent;
+    top: 0;
+    left: -45px; 
+  }
+  
+  .navLeft::after {
+    border-width: 20px;
+    border-color: transparent rgba(4, 4, 4, 0.869) transparent transparent;
+    top: 10px; 
+    left: -30px; 
+  }
+  
+  .navWright::before {
+    border-width: 30px;
+    border-color: transparent transparent transparent rgb(255, 255, 255);
+    top: 0;
+    right: -45px;
+  }
+  
+  .navWright::after {
+    border-width: 20px;
+    border-color: transparent transparent transparent rgb(0, 0, 0);
+    top: 10px; 
+    right: -30px; 
+  }
+  
+ .navLeft:hover::after {
+  transform: scale(1.5);
+
+    border-color: transparent rgb(49, 161, 39) transparent transparent;
+  }
+  
+   .navWright:hover::after {
+    transform: scale(1.5);
+
+    border-color: transparent transparent transparent rgba(49, 161, 39);
+  }
+
+  form button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem; 
+    font-family: "Press Start 2P", system-ui;
+    font-weight: bold;
+    border-radius: 2rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+form button:hover{
+  color: green;
+  transform: scale(1.1);
+}
