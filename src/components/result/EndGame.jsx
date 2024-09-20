@@ -9,7 +9,7 @@ const EndGame = ({ userName, scored, startNewGame, wrongFigures, correctFigures,
      <div className="text"> <h2>Your score for this round</h2></div>
      <div className="playerScored">
      <div className="content">
-     <p>Player Name: {userName}`</p>
+     <p>Player Name: {userName}</p>
       <p>Score: {scored}</p>
       <p>Correct Figures: {correctFigures}</p>
       <p>Wrong Figures: {wrongFigures}</p>
