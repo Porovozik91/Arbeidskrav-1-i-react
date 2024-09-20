@@ -7,21 +7,22 @@ const Howto = () => {
     <div className="HowTo">
       <h2>How to Play</h2>
       <div className="HowToPlay">
-        <p>Click on the <span>potatoes with eyes</span> to earn points. <img className="positiveFigure" src={ExampleImagePositive} alt="positiv spillefigur" /><br /><br /><hr /> 
-        Avoid those <span>without eyes to prevent</span> losing points. <img className="negativeFigure" src={ExampleImageNegative} alt="negativ spillefigur" /></p>
+        <p>Click on the <span>potatoes with eyes</span> to earn points. <img className="positiveFigure" src={ExampleImagePositive} alt="positiv spillefigur" /></p>
+        <hr />
+        <p>Avoid those <span>without eyes to prevent</span> losing points. <img className="negativeFigure" src={ExampleImageNegative} alt="negativ spillefigur" /></p>
       </div>
       <div className="rules">
-        <hr />
+       <hr />
         <h3><span>Game Rules:</span></h3>
         <ul>
           <li>The game lasts 60 seconds.</li>
           <li>Each correct click reduces the potato's visibility time by 5%.</li>
           <li>Clicking on the background resets the potato's visibility time by 5%.</li>
-          <hr />
+         <hr />
           <li><strong><span>Potatoes with Eyes:</span></strong> Earn points starting at 100, with an initial visibility of 2 seconds. Points decrease with time. Click quickly for more points.</li>
-          <hr />
+         <hr />
           <li><strong><span>Potatoes without Eyes:</span></strong> Lose 50 points if clicked.</li>
-          <hr />
+         
         </ul>
       </div>
       <p style={{fontSize: "2rem"}}>Good luck!</p>
