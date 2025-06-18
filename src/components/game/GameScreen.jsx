@@ -1,5 +1,5 @@
 import "../../styles/gameScreen.css"
-import Gamelogic from "./Gamelogic.jsx";
+import GameLogic from './GameLogic.jsx';
 
 
 const GameScreen = ({ 
