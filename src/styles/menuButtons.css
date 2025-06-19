@@ -1,6 +1,13 @@
+.menuButton {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
 .menuButton button {
     padding: 12px 24px; 
-    font-size: 1.2rem; 
+    font-size: clamp(0.9rem, 2.5vw, 1.2rem);
     font-weight: bold;
     font-family: "Press Start 2P", system-ui;
     border-radius: 1rem; 
@@ -8,27 +15,32 @@
     border: 2px solid #000;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     transition: background-color 0.3s ease, transform 0.3s ease;
-    margin-top: 20px; 
+    background: white;
+    color: black;
+    min-width: 120px;
 }
 
 .menuButton button:hover {
-    transform: scale(1.5);
+    transform: scale(1.1);
     color: green;
+    background: #f0f0f0;
 }
 
 .navigationButtons {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    max-width: 600px; /* 370px;  */
+    max-width: clamp(300px, 80vw, 600px);
     position: absolute;
-    transform: translateY(50%);
+    top: 50%;
+    transform: translateY(-50%);
     box-sizing: border-box;
-  }
-  
-  .nav-button {
-    width: 40px;
-    height: 40px;
+    pointer-events: none;
+}
+
+.nav-button {
+    width: clamp(35px, 8vw, 40px);
+    height: clamp(35px, 8vw, 40px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -36,65 +48,243 @@
     background: none; 
     border: none; 
     position: relative;
-  }
-  
-  .navLeft::before, .navLeft::after, .navWright::before, .navWright::after {
+    pointer-events: all;
+}
+
+.navLeft::before, .navLeft::after, .navWright::before, .navWright::after {
     content: "";
     position: absolute;
     border-style: solid;
     transition: background-color 0.3s ease, transform 0.3s ease;
-  }
-  
-  .navLeft::before {
-    border-width: 30px;
-    border-color: transparent rgb(255, 255, 255) transparent transparent;
-    top: 0;
-    left: -45px; 
-  }
-  
-  .navLeft::after {
-    border-width: 20px;
-    border-color: transparent rgba(4, 4, 4, 0.869) transparent transparent;
-    top: 10px; 
-    left: -30px; 
-  }
-  
-  .navWright::before {
-    border-width: 30px;
-    border-color: transparent transparent transparent rgb(255, 255, 255);
-    top: 0;
-    right: -45px;
-  }
-  
-  .navWright::after {
-    border-width: 20px;
-    border-color: transparent transparent transparent rgb(0, 0, 0);
-    top: 10px; 
-    right: -30px; 
-  }
-  
- .navLeft:hover::after {
-  transform: scale(1.5);
-
-    border-color: transparent rgb(49, 161, 39) transparent transparent;
-  }
-  
-   .navWright:hover::after {
-    transform: scale(1.5);
-
-    border-color: transparent transparent transparent rgba(49, 161, 39);
-  }
-
-  form button {
-    padding: 0.5rem 1rem;
-    font-size: 1rem; 
-    font-family: "Press Start 2P", system-ui;
-    font-weight: bold;
-    border-radius: 2rem;
-    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-form button:hover{
-  color: green;
-  transform: scale(1.1);
+.navLeft::before {
+    border-width: clamp(20px, 5vw, 30px);
+    border-color: transparent rgb(255, 255, 255) transparent transparent;
+    top: 0;
+    left: clamp(-30px, -8vw, -45px);
+}
+
+.navLeft::after {
+    border-width: clamp(15px, 4vw, 20px);
+    border-color: transparent rgba(4, 4, 4, 0.869) transparent transparent;
+    top: clamp(5px, 1.5vw, 10px);
+    left: clamp(-20px, -5vw, -30px);
+}
+
+.navWright::before {
+    border-width: clamp(20px, 5vw, 30px);
+    border-color: transparent transparent transparent rgb(255, 255, 255);
+    top: 0;
+    right: clamp(-30px, -8vw, -45px);
+}
+
+.navWright::after {
+    border-width: clamp(15px, 4vw, 20px);
+    border-color: transparent transparent transparent rgb(0, 0, 0);
+    top: clamp(5px, 1.5vw, 10px);
+    right: clamp(-20px, -5vw, -30px);
+}
+
+.navLeft:hover::after {
+    transform: scale(1.2);
+    border-color: transparent rgb(49, 161, 39) transparent transparent;
+}
+
+.navWright:hover::after {
+    transform: scale(1.2);
+    border-color: transparent transparent transparent rgba(49, 161, 39);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+form button {
+    padding: clamp(8px, 2vw, 12px) clamp(15px, 4vw, 20px);
+    font-size: clamp(0.8rem, 2vw, 1rem);
+    font-family: "Press Start 2P", system-ui;
+    font-weight: bold;
+    border-radius: 1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    border: 2px solid #000;
+    background: white;
+    color: black;
+    cursor: pointer;
+    min-width: 100px;
+}
+
+form button:hover {
+    color: green;
+    transform: scale(1.05);
+    background: #f0f0f0;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .menuButton {
+        margin-top: 15px;
+    }
+
+    .menuButton button {
+        padding: 10px 20px;
+        font-size: 1rem;
+        min-width: 100px;
+    }
+
+    .menuButton button:hover {
+        transform: scale(1.05);
+    }
+
+    .navigationButtons {
+        max-width: 350px;
+    }
+
+    .nav-button {
+        width: 35px;
+        height: 35px;
+    }
+
+    .navLeft::before {
+        border-width: 25px;
+        left: -35px;
+    }
+
+    .navLeft::after {
+        border-width: 18px;
+        top: 7px;
+        left: -25px;
+    }
+
+    .navWright::before {
+        border-width: 25px;
+        right: -35px;
+    }
+
+    .navWright::after {
+        border-width: 18px;
+        top: 7px;
+        right: -25px;
+    }
+
+    form {
+        gap: 1.2rem;
+    }
+
+    form button {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+        min-width: 90px;
+    }
+}
+
+@media (max-width: 480px) {
+    .menuButton {
+        margin-top: 12px;
+    }
+
+    .menuButton button {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+        min-width: 90px;
+    }
+
+    .navigationButtons {
+        max-width: 320px;
+    }
+
+    .nav-button {
+        width: 30px;
+        height: 30px;
+    }
+
+    .navLeft::before {
+        border-width: 22px;
+        left: -32px;
+    }
+
+    .navLeft::after {
+        border-width: 16px;
+        top: 6px;
+        left: -23px;
+    }
+
+    .navWright::before {
+        border-width: 22px;
+        right: -32px;
+    }
+
+    .navWright::after {
+        border-width: 16px;
+        top: 6px;
+        right: -23px;
+    }
+
+    .navLeft:hover::after, .navWright:hover::after {
+        transform: scale(1.1);
+    }
+
+    form {
+        gap: 1rem;
+    }
+
+    form button {
+        padding: 6px 14px;
+        font-size: 0.8rem;
+        min-width: 80px;
+    }
+}
+
+/* iPhone SE og små skjermer */
+@media (max-width: 375px) {
+    .menuButton {
+        margin-top: 10px;
+    }
+
+    .menuButton button {
+        padding: 6px 14px;
+        font-size: 0.8rem;
+        min-width: 80px;
+    }
+
+    .navigationButtons {
+        max-width: 300px;
+    }
+
+    .nav-button {
+        width: 28px;
+        height: 28px;
+    }
+
+    .navLeft::before {
+        border-width: 20px;
+        left: -30px;
+    }
+
+    .navLeft::after {
+        border-width: 14px;
+        top: 6px;
+        left: -21px;
+    }
+
+    .navWright::before {
+        border-width: 20px;
+        right: -30px;
+    }
+
+    .navWright::after {
+        border-width: 14px;
+        top: 6px;
+        right: -21px;
+    }
+
+    form button {
+        padding: 5px 12px;
+        font-size: 0.7rem;
+        min-width: 70px;
+    }
 }

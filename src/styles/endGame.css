@@ -4,47 +4,66 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    padding-bottom: 20px;
+    padding: 20px;
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../assets/Menu.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    gap: 20px;
+    box-sizing: border-box;
 }
 
-
+.endBodyContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+}
 
 .playerScored {
     background: rgba(255, 255, 255, 0.397);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
 }
 
- .text {
-    padding-top: 50px;
-    padding-bottom: 30px;
-    font-size: 2rem;
+.text {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: clamp(1.2rem, 4vw, 2rem);
     color: white;
+    text-align: center;
 }
 
- .content {
+.content {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
-    font-size: 1.6rem;
+    font-size: clamp(1rem, 3vw, 1.6rem);
     font-weight: bold;
+    text-align: center;
+}
+
+.content p {
+    margin: 0;
+    word-break: break-word;
 }
 
 .newGamebtn {
     margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
-
-
 
 .newGamebtn button {
     padding: 12px 24px; 
-    font-size: 1.2rem; 
+    font-size: clamp(0.9rem, 2.5vw, 1.2rem);
     font-weight: bold;
     font-family: "Press Start 2P", system-ui;
     border-radius: 1rem; 
@@ -52,10 +71,162 @@
     border: 2px solid #000;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     transition: background-color 0.3s ease, transform 0.3s ease;
-    margin-top: 20px; 
+    background: white;
+    color: black;
+    white-space: nowrap;
 }
 
 .newGamebtn button:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
     color: green;
+    background: #f0f0f0;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .endBody {
+        flex-direction: column;
+        padding: 15px;
+        gap: 15px;
+        align-items: stretch;
+    }
+
+    .endBodyContent {
+        max-width: 100%;
+        order: 1;
+    }
+
+    .playerScored {
+        padding: 15px;
+        max-width: none;
+    }
+
+    .text {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        font-size: 1.5rem;
+    }
+
+    .content {
+        gap: 0.8rem;
+        font-size: 1.2rem;
+    }
+
+    .newGamebtn button {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+
+    .newGamebtn button:hover {
+        transform: scale(1.05);
+    }
+
+    /* Leaderboard kommer under på mobil */
+    .endBody > div:last-child {
+        order: 2;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .endBody {
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .playerScored {
+        padding: 12px;
+        border-radius: 8px;
+    }
+
+    .text {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-size: 1.3rem;
+    }
+
+    .content {
+        gap: 0.6rem;
+        font-size: 1.1rem;
+    }
+
+    .newGamebtn {
+        margin-top: 15px;
+    }
+
+    .newGamebtn button {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+        border-radius: 0.8rem;
+    }
+}
+
+/* iPhone SE og små skjermer */
+@media (max-width: 375px) {
+    .endBody {
+        padding: 8px;
+        gap: 8px;
+    }
+
+    .playerScored {
+        padding: 10px;
+    }
+
+    .text {
+        padding-top: 8px;
+        padding-bottom: 8px;
+        font-size: 1.1rem;
+    }
+
+    .content {
+        gap: 0.5rem;
+        font-size: 1rem;
+    }
+
+    .newGamebtn {
+        margin-top: 12px;
+    }
+
+    .newGamebtn button {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+        border-radius: 0.6rem;
+    }
+}
+
+/* Landscape mode for mobiles */
+@media (max-height: 500px) and (orientation: landscape) {
+    .endBody {
+        flex-direction: row;
+        padding: 10px;
+        gap: 15px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .endBodyContent {
+        flex: 0 0 auto;
+        max-width: 350px;
+    }
+
+    .text {
+        padding-top: 5px;
+        padding-bottom: 10px;
+        font-size: 1.2rem;
+    }
+
+    .content {
+        font-size: 1rem;
+        gap: 0.5rem;
+    }
+
+    .newGamebtn {
+        margin-top: 10px;
+    }
+
+    .playerScored {
+        padding: 10px;
+    }
 }

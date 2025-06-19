@@ -1,96 +1,247 @@
 .leaderboardContainer {
-  width: 400px;
+  width: 100%;
+  max-width: 400px;
   height: 500px;
   background-color: rgba(71, 82, 73, 0.529);
   border-radius: 1rem;
   border: 4px solid rgba(0, 0, 0, 0.3);
-  padding: 20px 38px;
+  padding: 20px;
   filter: drop-shadow(0 30px 10px rgba(128, 227, 159, 0.456));
   text-align: center;
   transform: rotateY(40deg) rotateX(-10deg);
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 .leaderboardHeader h2 {
   padding-bottom: 20px;
-  font-size: 1.8rem;
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
   color: rgba(11, 241, 1);
   font-family: "Press Start 2P", system-ui;
+  margin: 0;
 }
 
 .scoreClimb {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  gap: 15px;
-  font-size: 1.4rem;
+  gap: 10px;
+  font-size: clamp(0.8rem, 2vw, 1.4rem);
   font-weight: bold;
   color: rgb(0, 0, 0);
+  margin-bottom: 15px;
 }
 
-.top1, .top2, .top3{
+.top1, .top2, .top3 {
   margin-bottom: 2px;
   border-radius: 10px;
-  padding: 5px;
-  font-size: 1.5rem;
+  padding: 5px 3px;
+  font-size: clamp(0.7rem, 1.8vw, 1.2rem);
+  line-height: 1.2;
 }
 
 .climb1, .climb2, .climb3 {
-  width: 110px;
+  width: clamp(80px, 20vw, 110px);
   color: rgb(0, 0, 0);
   display: flex;
   justify-content: center;
   align-items: center; 
 }
 
-
-
 .climb1 {
-  height: 80px;
-}
-
-.top1, .climb1{
-  background-color: #e0c344;
-}
-
-.top2, .climb2{
-  background-color: #c0c0c0;
+  height: clamp(60px, 15vw, 80px);
 }
 
 .climb2, .climb3 {
-  height: 50px;
+  height: clamp(40px, 12vw, 50px);
 }
 
-.climb1 p span, .climb2 p span, .climb3 p span{
-  font-size: 2.4rem;
+.top1, .climb1 {
+  background-color: #e0c344;
+}
+
+.top2, .climb2 {
+  background-color: #c0c0c0;
 }
 
 .top3, .climb3 {
   background-color: #cd7f32;
 }
 
+.climb1 p span, .climb2 p span, .climb3 p span {
+  font-size: clamp(1.5rem, 4vw, 2.4rem);
+}
 
-.restPlaces{
+.restPlaces {
   color: white;
-  height: 230px;
-  margin: 10px;
+  height: clamp(180px, 35vh, 230px);
+  margin: 10px 5px;
   overflow: auto;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-
-.restPlaces ul{
+.restPlaces ul {
   list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
-.restScore p{
+.restScore p {
   border-radius: 5px;
   background-color: rgba(23, 190, 65, 0.43);
-  font-size: 20px;
+  font-size: clamp(0.8rem, 2.5vw, 1.2rem);
   font-weight: bold;
   margin-bottom: 5px;
+  padding: 5px;
+  line-height: 1.3;
 }
 
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .leaderboardContainer {
+    width: 95vw;
+    max-width: 350px;
+    height: auto;
+    min-height: 450px;
+    padding: 15px;
+    transform: rotateY(20deg) rotateX(-5deg);
+  }
 
+  .leaderboardHeader h2 {
+    padding-bottom: 15px;
+    font-size: 1.3rem;
+  }
 
+  .scoreClimb {
+    gap: 8px;
+    margin-bottom: 12px;
+  }
 
+  .top1, .top2, .top3 {
+    padding: 4px 2px;
+    font-size: 0.9rem;
+  }
+
+  .climb1, .climb2, .climb3 {
+    width: 90px;
+  }
+
+  .climb1 {
+    height: 65px;
+  }
+
+  .climb2, .climb3 {
+    height: 45px;
+  }
+
+  .restPlaces {
+    height: 200px;
+    margin: 8px 3px;
+  }
+
+  .restScore p {
+    font-size: 1rem;
+    padding: 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .leaderboardContainer {
+    width: 98vw;
+    max-width: 320px;
+    min-height: 400px;
+    padding: 12px;
+    transform: rotateY(10deg) rotateX(-3deg);
+  }
+
+  .leaderboardHeader h2 {
+    padding-bottom: 12px;
+    font-size: 1.1rem;
+  }
+
+  .scoreClimb {
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+
+  .top1, .top2, .top3 {
+    padding: 3px 1px;
+    font-size: 0.8rem;
+  }
+
+  .climb1, .climb2, .climb3 {
+    width: 75px;
+  }
+
+  .climb1 {
+    height: 55px;
+  }
+
+  .climb2, .climb3 {
+    height: 40px;
+  }
+
+  .climb1 p span, .climb2 p span, .climb3 p span {
+    font-size: 1.8rem;
+  }
+
+  .restPlaces {
+    height: 180px;
+    margin: 6px 2px;
+  }
+
+  .restScore p {
+    font-size: 0.9rem;
+    padding: 3px;
+  }
+}
+
+/* iPhone SE og små skjermer */
+@media (max-width: 375px) {
+  .leaderboardContainer {
+    width: 99vw;
+    max-width: 300px;
+    min-height: 380px;
+    padding: 10px;
+    transform: rotateY(5deg) rotateX(-2deg);
+  }
+
+  .leaderboardHeader h2 {
+    font-size: 1rem;
+    padding-bottom: 10px;
+  }
+
+  .scoreClimb {
+    gap: 4px;
+  }
+
+  .top1, .top2, .top3 {
+    font-size: 0.7rem;
+    padding: 2px 1px;
+  }
+
+  .climb1, .climb2, .climb3 {
+    width: 65px;
+  }
+
+  .climb1 {
+    height: 50px;
+  }
+
+  .climb2, .climb3 {
+    height: 35px;
+  }
+
+  .climb1 p span, .climb2 p span, .climb3 p span {
+    font-size: 1.5rem;
+  }
+
+  .restPlaces {
+    height: 160px;
+  }
+
+  .restScore p {
+    font-size: 0.8rem;
+    padding: 2px;
+  }
+}
